@@ -1,10 +1,13 @@
 {
-  "name": "@bacon-zhang/mathlib",
+  "name": "bz-mathlib",
   "version": "0.0.1",
   "description": "Delightul methods for processing numbers",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage"
+    "build": "./node_modules/.bin/babel ./src --out-dir ./lib ",
+    "p": "npm run build && npm publish",
+    "test": "jest --coverage",
+    "coverage": "npm test -- --coverage"
   },
   "repository": {
     "type": "git",

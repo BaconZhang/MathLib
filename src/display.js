@@ -1,5 +1,5 @@
-import { isNumber, toNumber, overLimit, compose } from './lib';
-import calculate from './calculate';
+import { isNumber, toNumber, overLimit, compose } from "./lib";
+import calculate from "./calculate";
 const { abs } = calculate;
 
 const display = (num, fix = 2, transLargeNumber = true) => {
@@ -10,9 +10,9 @@ const display = (num, fix = 2, transLargeNumber = true) => {
   if (isNumber(transformedNum)) {
     if (transLargeNumber) {
       if (transformedNum > 100000000) {
-        return (transformedNum / 100000000).toFixed(fix1) + '亿';
+        return (transformedNum / 100000000).toFixed(fix1) + "亿";
       } else if (transformedNum >= 1000000) {
-        let temp = (transformedNum / 10000).toFixed(2);
+        let temp = (transformedNum / 10000).toFixed(fix2);
         return overLimit(temp, 10000) ? `${(1).toFixed(fix2)}亿` : `${temp}万`;
       } else {
         let temp = transformedNum.toFixed(fix3);
@@ -22,7 +22,7 @@ const display = (num, fix = 2, transLargeNumber = true) => {
       return transformedNum.toFixed(fix3);
     }
   } else {
-    return '--';
+    return "--";
   }
 };
 
@@ -30,23 +30,23 @@ const localeDisplay = (num, fix = 2) => {
   const transformedNum = toNumber(num);
   if (isNumber(transformedNum)) {
     let fixNum = abs(num).toFixed(fix);
-    let tempArr = fixNum.split('.');
+    let tempArr = fixNum.split(".");
     tempArr[0] = tempArr[0]
-      .split('')
+      .split("")
       .reverse()
       .reduce((prev, cur, curIndex, array) => {
         prev += cur;
         if ((curIndex + 1) % 3 === 0 && curIndex !== array.length - 1) {
-          prev += ',';
+          prev += ",";
         }
         return prev;
-      }, '')
-      .split('')
+      }, "")
+      .split("")
       .reverse()
-      .join('');
-    return `${num < 0 ? '-' : ''}${tempArr.join('.')}`;
+      .join("");
+    return `${num < 0 ? "-" : ""}${tempArr.join(".")}`;
   } else {
-    return '--';
+    return "--";
   }
 };
 
