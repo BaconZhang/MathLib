@@ -1,4 +1,24 @@
 {
+  "/Users/Bacon/MathLib/index.js": {
+    "path": "/Users/Bacon/MathLib/index.js",
+    "statementMap": {
+      "0": {
+        "start": { "line": 1, "column": 16 },
+        "end": { "line": 1, "column": 38 }
+      },
+      "1": {
+        "start": { "line": 3, "column": 0 },
+        "end": { "line": 3, "column": 25 }
+      }
+    },
+    "fnMap": {},
+    "branchMap": {},
+    "s": { "0": 1, "1": 1 },
+    "f": {},
+    "b": {},
+    "_coverageSchema": "332fd63041d2c1bcb487cc26dd0d5f7d97098a6c",
+    "hash": "7bd1ba6544bb151f9323cbc5ee6cc0debca5ebc5"
+  },
   "/Users/Bacon/MathLib/lib/calculate.js": {
     "path": "/Users/Bacon/MathLib/lib/calculate.js",
     "statementMap": {

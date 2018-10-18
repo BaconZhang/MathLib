@@ -1,4 +1,4 @@
-import MathLib from "../lib/index";
+import MathLib from "../index";
 const {
   isNumber,
   compose,
