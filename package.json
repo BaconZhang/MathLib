@@ -1,6 +1,6 @@
 {
   "name": "bz-mathlib",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Delightul methods for processing numbers",
   "main": "index.js",
   "scripts": {
