@@ -2,6 +2,11 @@ import { isNumber, toNumber, overLimit, compose } from "./lib";
 import calculate from "./calculate";
 const { abs } = calculate;
 
+/*
+  * num 待显示的数字，Infinite、-Infinite、NaN以及其他的不可转为数字的均显示为'--'
+  * fix 保留几位小数，采用银行家算法：四舍六入五考虑，五后非零就进一，五后为零看奇偶，五前为偶应舍去，五前为奇要进一
+  * transLargeNumber 是否要转换显示大数字，超过100万显示为xxx万，超过1亿显示为xxx亿
+*/
 const display = (num, fix = 2, transLargeNumber = true) => {
   let [fix1, fix2, fix3] = Array.isArray(fix)
     ? fix

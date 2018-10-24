@@ -1,5 +1,6 @@
 import calculate from "./calculate";
 import display from "./display";
+import special from "./special";
 import { isNumber, compose, toNumber, filterNumber } from "./lib";
 
 export default {
@@ -8,5 +9,6 @@ export default {
   isNumber,
   compose,
   toNumber,
-  filterNumber
+  filterNumber,
+  ...special
 };

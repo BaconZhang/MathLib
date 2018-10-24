@@ -17,7 +17,9 @@ const {
   max,
   min,
   display,
-  localeDisplay
+  localeDisplay,
+  echarts,
+  energy
 } = MathLib;
 
 test("toNumber", () => {
@@ -135,4 +137,36 @@ test("abs", () => {
   expect(abs(4)).toBe(4);
   expect(abs(-4)).toBe(4);
   expect(abs(null)).toBe(NaN);
+});
+
+test("echarts.getMinMax", () => {
+  const tests0 = [null, null, undefined];
+  const tests1 = [520, 1024, 9500, null];
+  const tests2 = [120, 323, 233];
+  const tests3 = [10280, 200, 1024, 9500, null];
+  const tests4 = [10280, 1520, 1024, 9500, null];
+  const tests5 = [10280, 300, 1024, 9500, null];
+  expect(echarts.getMinMax(tests0)).toEqual({ min: NaN, max: NaN });
+  expect(echarts.getMinMax(tests1)).toEqual({ min: 0, max: 10000 });
+  expect(echarts.getMinMax(tests2)).toEqual({ min: 100, max: 400 });
+  expect(echarts.getMinMax(tests3)).toEqual({ min: 0, max: 20000 });
+  expect(echarts.getMinMax(tests4)).toEqual({ min: 1000, max: 11000 });
+  expect(echarts.getMinMax(tests5)).toEqual({ min: 0, max: 11000 });
+});
+
+test("energy.factor", () => {
+  const standards = [90, 85, 80];
+  const tests = {
+    90: [0.95, 0.9, 0.85, 0.65, 0.6, 0.5],
+    85: [0.95, 0.9, 0.85, 0.65, 0.6, 0.5],
+    80: [0.95, 0.9, 0.8, 0.6, 0.55, 0.5]
+  };
+  const results = standards.map(standard => {
+    let test = tests[standard];
+    return test.map(i => energy.factor(i, standard));
+  });
+  expect(results[0]).toEqual([-0.75, -0, 2.5, 15, 25, 45]);
+  expect(results[1]).toEqual([-1.1, -0.5, -0, 10, 15, 35]);
+  expect(results[2]).toEqual([-1.3, -1, -0, 10, 15, 25]);
+  expect(energy.factor(null)).toBe(NaN);
 });
