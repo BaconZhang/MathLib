@@ -1,6 +1,6 @@
 {
   "name": "bz-mathlib",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Delightul methods for processing numbers",
   "main": "index.js",
   "scripts": {
@@ -39,6 +39,20 @@
   "babel": {
     "presets": [
       "@babel/preset-env"
+    ],
+    "plugins": [
+      [
+        "@babel/plugin-proposal-decorators",
+        {
+          "legacy": true
+        }
+      ],
+      [
+        "@babel/plugin-proposal-class-properties",
+        {
+          "loose": true
+        }
+      ]
     ]
   },
   "lint-staged": {
@@ -51,5 +65,9 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
+  },
+  "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-decorators": "^7.1.2"
   }
 }

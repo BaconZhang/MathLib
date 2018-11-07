@@ -55,10 +55,13 @@ test("display", () => {
   expect(display(num2, 0, true)).toBe("11亿");
   expect(display(num2, 2, true)).toBe("10.55亿");
   expect(display(num2, 2, false)).toBe("1055500000.00");
+  expect(display(num2, 0, true, [100000000])).toBe("11亿");
   const num3 = 99990000;
   expect(display(num3, 0, true)).toBe("9999万");
   expect(display(num3, 2, true)).toBe("9999.00万");
   expect(display(num3, 2, false)).toBe("99990000.00");
+  expect(display(num3, 0, true, 100000000)).toBe("99990000");
+  expect(display(num3, 0, true, 10000)).toBe("9999万");
   const num4 = null;
   expect(display(num4)).toBe("--");
   const num5 = 1000;
